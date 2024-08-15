@@ -21,7 +21,7 @@ jobs:
 
 
     - name: Build the project backend 
-      run: go build /simple-fortune-cookie/backend
+      run: go build /backend/ 
 
     - name: Build the project frontend
-      run: go build /simple-fortune-cookie/frontend
+      run: go build /frontend/
