@@ -52,9 +52,22 @@ jobs:
       run: go test ./...
 
 
-  #Linting: 
-    #runs-on: ubuntu-latest
-    #needs: [Build]
-    #steps: 
-    #- name: Run linting 
-      #run: 
+  Linting: 
+    runs-on: ubuntu-latest
+    needs: [Build]
+    steps: 
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with: 
+        go-version: '^1.17'
+        
+    - name: Run golangci-lint on backend
+      working-directory: ./backend
+      run: golangci-lint run
+
+    - name: Run golangci-lint on frontend
+      working-directory: ./frontend
+      run: golangci-lint run
