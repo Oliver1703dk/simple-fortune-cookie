@@ -37,8 +37,24 @@ jobs:
 
   Test:
     runs-on: ubuntu-latest
-    needs: Build
+    needs: [Build]
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with: 
+        go-version: '^1.17'
+        
     - name: Run tests for frontend
       working-directory: ./frontend
       run: go test ./...
+
+
+  #Linting: 
+    #runs-on: ubuntu-latest
+    #needs: [Build]
+    #steps: 
+    #- name: Run linting 
+      #run: 
