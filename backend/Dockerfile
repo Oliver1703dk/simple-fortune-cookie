@@ -3,9 +3,9 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -o my-backend
+RUN go build -o backend .
 FROM alpine:latest
 WORKDIR /root/
-COPY --from=builder /app/my-backend .
+COPY --from=builder /app/backend .
 EXPOSE 8080
-CMD ["./my-backend"]
+CMD ["./backend"]
