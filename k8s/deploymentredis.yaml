@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: redis
+  name: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      volumes:
+        - name: redis-volume
+          persistentVolumeClaim:
+            claimName: redis-volume
+      containers:
+        - name: redis
+          image: redis:7.4
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: redis-volume
+              mountPath: /data
+              subPath: database
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-volume
+spec:
+  storageClassName: "gp2"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
