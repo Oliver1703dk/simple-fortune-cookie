@@ -29,7 +29,7 @@ jobs:
       run: go build 
 
 
-    #- name: Run tests 
-      #working-directory: ./frontend
-      #run: go test
+    - name: Run tests 
+      working-directory: ./frontend
+      run: go test
 
