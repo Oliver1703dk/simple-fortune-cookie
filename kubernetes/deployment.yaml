@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-fortune-cookie
+  labels:
+    app: simple-fortune-cookie
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-fortune-cookie
+  template:
+    metadata:
+      labels:
+        app: simple-fortune-cookie
+    spec:
+      containers:
+      - name: simple-fortune-cookie
+        image: ubuntu:latest
+        ports:
+        - containerPort: 80
