@@ -63,11 +63,12 @@ jobs:
       uses: actions/setup-go@v4
       with: 
         go-version: '^1.17'
-        
-    - name: Run golangci-lint on backend
-      working-directory: ./backend
-      run: golangci-lint run
 
-    - name: Run golangci-lint on frontend
-      working-directory: ./frontend
-      run: golangci-lint run
+    - name: run linting
+      uses: super-linter/super-linter/slim@v5 
+      env:
+        DEFAULT_BRANCH: main
+        # To report GitHub Actions status checks
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DISABLE_ERRORS: true 
+
