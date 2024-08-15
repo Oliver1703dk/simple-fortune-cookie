@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: simple-fortune-cookie-service
+  name: backend-service 
 spec:
   selector:
-    app: simple-fortune-cookie
+    app: backend-service
   ports:
     - protocol: TCP
       port: 80
