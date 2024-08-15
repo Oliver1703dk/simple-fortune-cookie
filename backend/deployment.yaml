@@ -17,5 +17,7 @@ spec:
       containers:
       - name: backend
         image: kennyloc/backendimage:latest
+        ports: 
+        - containerPort: 8080
        
 
