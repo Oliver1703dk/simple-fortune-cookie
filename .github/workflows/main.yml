@@ -98,7 +98,6 @@ jobs:
       env:
         DEFAULT_BRANCH: main
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # Ignores some errors 
         DISABLE_ERRORS: true 
 
   Deploy:
@@ -108,11 +107,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Decode the KUBECONFIG secret and save
       - name: Set up kubeconfig
         run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
 
-      # Run the deployment script
       - name: Deploy to Kubernetes
         run: ./deploy.sh
   
