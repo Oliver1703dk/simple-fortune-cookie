@@ -57,7 +57,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./frontend # Set the context to frontend directory
+          dockerfile: ./frontend/Dockerfile # Explicitly set the Dockerfile path
           push: true
           tags: |
             oliver1703dk/frontendimage:latest
