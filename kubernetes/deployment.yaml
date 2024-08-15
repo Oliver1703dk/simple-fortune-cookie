@@ -5,7 +5,7 @@ metadata:
   labels:
     app: simple-fortune-cookie
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: simple-fortune-cookie
@@ -15,7 +15,7 @@ spec:
         app: simple-fortune-cookie
     spec:
       containers:
-      - name: simple-fortune-cookie
-        image: ubuntu:latest
-        ports:
-        - containerPort: 80
+      - name: devopsacademyc
+        image: eficodeacademy/devopsacademyc:latest
+       
+
