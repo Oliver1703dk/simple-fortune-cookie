@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: backend
   labels:
     app: backend
 spec:
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: backend
-        image: oliver1703dk/backendimagev2:latest
+        image: oliver1703dk/backendimage:latest
         ports: 
         - containerPort: 8080
