@@ -1,10 +1,7 @@
-name: non-main
+name: PR
 on:
-  push:
-    branches:
-      - '*'  
-    branches-ignore:
-      - main
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   Build:
