@@ -1,7 +1,10 @@
 name: non-main
 on:
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - '*'  
+    branches-ignore:
+      - main
 
 jobs:
   Build:
