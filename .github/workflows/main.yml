@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, workflow-test]
   pull_request:
-    branches: [main]
+    branches: [main, workflow-test]
 
 jobs:
   Build:
@@ -79,6 +79,18 @@ jobs:
     - name: Run tests for frontend
       working-directory: ./frontend
       run: go test ./...
+
+    - name: Deploy Application
+      run: |
+        docker compose up -d
+
+    - name: Run Availability Test
+      run: ./test_script.sh
+
+    - name: Tear down Application
+      if: failure() || success()
+      run: |
+        docker compose down
 
   
   Linting: 
