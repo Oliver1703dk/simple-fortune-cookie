@@ -84,6 +84,9 @@ jobs:
       run: |
         docker compose up -d
 
+    - name: Grant execute permissions to test_script.sh
+      run: chmod +x ./test_script.sh
+
     - name: Run Availability Test
       run: ./test_script.sh
 
