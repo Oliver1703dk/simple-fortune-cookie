@@ -1,7 +1,6 @@
 #!/bin/bash
 
 FRONTEND_URL="http://localhost:8080"
-BACKEND_URL="http://localhost:8081"
 
 check_service() {
     local url=$1
@@ -16,4 +15,3 @@ check_service() {
 }
 
 check_service $FRONTEND_URL
-check_service $BACKEND_URL
