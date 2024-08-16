@@ -1,6 +1,6 @@
 name: non-main
 on:
-  pull_request:
+  push:
     branches:
       - '*'  
     branches-ignore:
