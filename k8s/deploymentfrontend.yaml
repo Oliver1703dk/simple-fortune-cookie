@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: oliver1703dk/frontendimage:latest
+        image: oliver1703dk/frontendimagev2:latest
+        envFrom:
+          - configMapRef:
+              name: configfrontend
         ports:
         - containerPort: 8080

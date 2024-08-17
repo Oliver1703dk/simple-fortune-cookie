@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
       - name: backend
-        image: oliver1703dk/backendimage:latest
+        image: oliver1703dk/backendimagev2:latest
+        envFrom:
+          - configMapRef:
+              name: configbackend
         ports: 
-        - containerPort: 8080
+        - containerPort: 9000
