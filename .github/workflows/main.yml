@@ -55,7 +55,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image frontend
         uses: docker/build-push-action@v4
         with:
           context: ./frontend 
@@ -63,6 +63,15 @@ jobs:
           push: true
           tags: |
             oliver1703dk/frontendimage:latest
+            
+      - name: Build and push Docker image backend
+        uses: docker/build-push-action@v4
+        with:
+          context: ./backend 
+          dockerfile: ./backend/Dockerfile 
+          push: true
+          tags: |
+            oliver1703dk/backendimage:latest
 
   Test:
     runs-on: ubuntu-latest
@@ -79,6 +88,21 @@ jobs:
     - name: Run tests for frontend
       working-directory: ./frontend
       run: go test ./...
+
+    - name: Deploy Application
+      run: |
+        docker compose up -d
+
+    - name: Grant execute permissions to test_script.sh
+      run: chmod +x ./test_script.sh
+
+    - name: Run Availability Test
+      run: ./test_script.sh
+
+    - name: Tear down Application
+      if: failure() || success()
+      run: |
+        docker compose down
 
   
   Linting: 
