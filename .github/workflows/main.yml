@@ -62,7 +62,7 @@ jobs:
           dockerfile: ./frontend/Dockerfile 
           push: true
           tags: |
-            oliver1703dk/frontendimage:latest
+            oliver1703dk/frontendimagev2:latest
             
       - name: Build and push Docker image backend
         uses: docker/build-push-action@v4
@@ -71,7 +71,7 @@ jobs:
           dockerfile: ./backend/Dockerfile 
           push: true
           tags: |
-            oliver1703dk/backendimage:latest
+            oliver1703dk/backendimagev2:latest
 
   Test:
     runs-on: ubuntu-latest
